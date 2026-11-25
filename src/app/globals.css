@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
-	--font-mono: var(--font-jetbrains-mono);
+	--font-mono: var(--font-vt323);
 
-	--color-blue-main: #b7ebff;
-	--color-red-main: #ff8080;
+	--color-light-blue: #BEDCFF;
+	--color-blue: #99C3FF;
 
 	--color-outline: #0011ff;
 }

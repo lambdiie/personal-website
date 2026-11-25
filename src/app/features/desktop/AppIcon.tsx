@@ -2,9 +2,12 @@ import Image from "next/image";
 
 export default function AppIcon({ img, name }: { img: string; name: string }) {
 	return (
-		<div className="flex flex-col gap-2 w-24 my-2 mx-4">
-			<Image src={img} alt={name} width={96} height={96}></Image>
+		<button
+			type="button"
+			className="flex flex-col items-center gap-2 w-18 my-2 mx-4 text-lg text-outline"
+		>
+			<Image src={img} alt={name} width={64} height={64}></Image>
 			<p className="font-mono text-center">{name}</p>
-		</div>
+		</button>
 	);
 }

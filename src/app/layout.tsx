@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { VT323 } from "next/font/google";
 import "./globals.css";
 
-const jetBrainsMono = JetBrains_Mono({
-	variable: "--font-jetbrains-mono",
+const vt323 = VT323({
+	weight: "400",
+	variable: "--font-vt323",
 	subsets: ["latin"],
 });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${jetBrainsMono.variable} antialiased`}>
+			<body className={`${vt323.variable} antialiased`}>
 				{children}
 			</body>
 		</html>
