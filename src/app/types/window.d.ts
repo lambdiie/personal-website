@@ -1,4 +1,4 @@
-type WindowState = {
+interface WindowState {
   id: string;                 // crypto.randomUUID()
   app: AppId;
   x: number; y: number;       // px, relative to window layer
@@ -7,3 +7,7 @@ type WindowState = {
   isMaximized: boolean;
   restore?: { x: number; y: number; w: number; h: number }; // for un-maximize
 };
+
+interface WindowProps extends WindowState {
+  icon: string;
+}

@@ -2,7 +2,7 @@ type AppType = "inline" | "iframe";
 
 type AppId = "home" | "projects" | "videos" | "art";
 
-type AppMeta = {
+interface AppMeta {
   name: string;
   icon: string;              // /public path
   route: string;             // /apps/<slug>
