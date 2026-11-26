@@ -1,20 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Rnd } from "react-rnd";
 import { useCallback } from "react";
+import { Rnd } from "react-rnd";
 
-export default function Window({
-	id,
-	app,
-	x,
-	y,
-	w,
-	h,
-	z,
-	icon,
-	isMaximized,
-}: WindowProps) {
+export default function Window({ id, app, x, y, w, h, z, icon }: WindowProps) {
 	// Toggle pointer events on elements that may interfere with dragging
 	const togglePointerEvents = useCallback((disable: boolean) => {
 		const elements = document.querySelectorAll<HTMLElement>(
@@ -42,14 +32,14 @@ export default function Window({
 			onResizeStop={() => togglePointerEvents(false)}
 		>
 			<div
-				className="border-2 border-outline bg-blue absolute p-2 flex flex-col gap-2 w-full h-full"
+				className="border-2 border-outline bg-blue flex flex-col w-full h-full"
 				role="dialog"
 				aria-labelledby={`titlebar-${id}`}
 				aria-modal={false}
 			>
-				<div className="flex items-center gap-2 border-2 border-outline pl-2 bg-blue">
+				<div className="flex items-center gap-2 border-b-2 border-outline pl-2 bg-blue">
 					<Image
-						className="[image-rendering:pixelated]	shrink-0"
+						className="[image-rendering:pixelated] shrink-0"
 						src={icon}
 						alt=""
 						width={16}
@@ -60,7 +50,7 @@ export default function Window({
 				<iframe
 					src="https://www.youtube.com/embed/dQw4w9WgXcQ"
 					title={app}
-					className="w-full min-h-0 grow border-2 border-outline"
+					className="w-full min-h-0 grow p-2"
 				/>
 			</div>
 		</Rnd>

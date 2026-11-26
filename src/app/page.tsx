@@ -7,7 +7,7 @@ import { APPS } from "./lib/apps";
 
 export default function Home() {
 	return (
-		<div className="font-mono flex flex-col w-full h-dvh overflow-hidden relative">
+		<div className="font-mono flex flex-col w-full h-dvh overflow-hidden">
 			<Window
 				id="1"
 				app="home"
@@ -17,7 +17,7 @@ export default function Home() {
 				h={500}
 				z={1}
 				icon="/racket.png"
-				isMaximized={false}
+				isActive={true}
 			/>
 			<main className="bg-light-blue grow min-h-0 w-full flex flex-col flex-wrap content-start overflow-y-auto p-4">
 				{Object.values(APPS).map((app) => (

@@ -3,18 +3,18 @@
 @theme inline {
 	--font-mono: var(--font-vt323);
 
-	--color-light-blue: #BEDCFF;
-	--color-blue: #99C3FF;
+	--color-light-blue: #bedcff;
+	--color-blue: #99c3ff;
 
 	--color-outline: #0011ff;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
 	:root {
-		/* --background: #0a0a0a;
-    --foreground: #ededed; */
+		--background: #0a0a0a;
+    --foreground: #ededed;
 	}
-}
+} */
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
