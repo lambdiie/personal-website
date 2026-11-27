@@ -7,7 +7,6 @@ interface WindowProps {
 	h: number;
 	z: number;
 	icon: string;
-	isActive: boolean;
 	// isMaximized: boolean;
 	// restore?: { x: number; y: number; w: number; h: number }; // for un-maximize
 }

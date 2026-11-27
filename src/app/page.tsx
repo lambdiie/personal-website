@@ -1,42 +1,16 @@
-import Image from "next/image";
-import Button from "./components/Button";
-import AppIcon from "./features/desktop/AppIcon";
-import Window from "./features/desktop/Window";
-
-import { APPS } from "./lib/apps";
+import AppContainer from "@/app/features/desktop/AppContainer";
+import WindowContainer from "@/app/features/desktop/WindowContainer";
+import Taskbar from "@/app/features/taskbar/Taskbar";
 
 export default function Home() {
 	return (
 		<div className="font-mono flex flex-col w-full h-dvh overflow-hidden">
-			<Window
-				id="1"
-				app="home"
-				x={300}
-				y={100}
-				w={1000}
-				h={500}
-				z={1}
-				icon="/racket.png"
-				isActive={true}
-			/>
-			<main className="bg-light-blue grow min-h-0 w-full flex flex-col flex-wrap content-start overflow-y-auto p-4">
-				{Object.values(APPS).map((app) => (
-					<AppIcon img={app.icon} name={app.name} key={app.name} />
-				))}
+			<main className="bg-light-blue grow min-h-0 w-full relative">
+				<WindowContainer />
+				<AppContainer />
 			</main>
-			<footer className="bg-blue flex shrink-0 justify-between py-2 px-4 border-t-2 border-t-outline w-full">
-				<Button>
-					<Image src={"/racket.png"} alt={""} width={24} height={24} />
-					<p>Start</p>
-				</Button>
-				<div className="flex gap-2">
-					<Button>
-						<p>Date</p>
-					</Button>
-					<Button>
-						<p>Time</p>
-					</Button>
-				</div>
+			<footer className="bg-blue shrink-0 border-t-2 border-t-outline w-full">
+				<Taskbar />
 			</footer>
 		</div>
 	);
