@@ -4,12 +4,10 @@ import { APPS } from "@/app/lib/apps";
 interface WindowStore {
 	windows: Record<string, WindowProps>;
 	order: string[];
-	focused: string | null;
-	zCounter: number;
 
 	open(app: AppId): void;
-	// close(id: string): void;
-	// focus(id: string): void;
+	close(id: string): void;
+	focus(id: string): void;
 	// minimize(id: string): void;
 	// toggleMaximize(id: string): void;
 }
@@ -17,12 +15,10 @@ interface WindowStore {
 export const useWindowStore = create<WindowStore>((set, get) => ({
 	windows: {},
 	order: [],
-	focused: null,
-	zCounter: 0,
 
 	open(app) {
 		const id = crypto.randomUUID();
-		const { windows, order, zCounter } = get();
+		const { windows, order } = get();
 		const appMeta = APPS[app];
 
 		set({
@@ -31,12 +27,25 @@ export const useWindowStore = create<WindowStore>((set, get) => ({
 				[id]: {
 					id,
 					appMeta,
-					z: zCounter + 1,
 				},
 			},
 			order: [...order, id],
-			focused: id,
-			zCounter: zCounter + 1,
 		});
+	},
+
+	close(id) {
+		const { windows, order } = get();
+		const updatedWindows = { ...windows };
+		delete updatedWindows[id];
+		set({
+			windows: updatedWindows,
+			order: order.filter((winId) => winId !== id),
+		});
+	},
+
+	focus(id) {
+		const { order } = get();
+		if (order[order.length - 1] === id) return;
+		set({ order: [...order.filter((w) => w !== id), id] });
 	},
 }));

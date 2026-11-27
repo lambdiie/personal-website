@@ -3,8 +3,14 @@
 import Image from "next/image";
 import { useCallback } from "react";
 import { Rnd } from "react-rnd";
+import Button from "@/app/components/Button";
+import { useWindowStore } from "@/app/store/window-store";
 
-export default function Window({ id, appMeta, z }: WindowProps) {
+export default function Window({ id, appMeta }: WindowProps) {
+	const z = useWindowStore((state) => state.order.indexOf(id) + 1);
+	const close = useWindowStore((state) => state.close);
+	const focus = useWindowStore((state) => state.focus);
+
 	// Toggle pointer events on elements that may interfere with dragging
 	const togglePointerEvents = useCallback((disable: boolean) => {
 		const elements = document.querySelectorAll<HTMLElement>(
@@ -30,6 +36,7 @@ export default function Window({ id, appMeta, z }: WindowProps) {
 			onDragStop={() => togglePointerEvents(false)}
 			onResizeStart={() => togglePointerEvents(true)}
 			onResizeStop={() => togglePointerEvents(false)}
+			onPointerDown={() => focus(id)}
 		>
 			<div
 				className="border-2 border-outline bg-blue flex flex-col w-full h-full"
@@ -37,15 +44,20 @@ export default function Window({ id, appMeta, z }: WindowProps) {
 				aria-labelledby={`titlebar-${id}`}
 				aria-modal={false}
 			>
-				<div className="flex items-center gap-2 border-b-2 border-outline pl-2 bg-blue">
-					<Image
-						className="[image-rendering:pixelated] shrink-0"
-						src={appMeta.icon}
-						alt=""
-						width={16}
-						height={16}
-					/>
-					<h1 id={`titlebar-${id}`}>{appMeta.name}</h1>
+				<div className="flex justify-between border-b-2 border-outline px-2 bg-blue">
+					<div className="flex items-center gap-2">
+						<Image
+							className="[image-rendering:pixelated] shrink-0"
+							src={appMeta.icon}
+							alt=""
+							width={16}
+							height={16}
+						/>
+						<h1 id={`titlebar-${id}`}>{appMeta.name}</h1>
+					</div>
+					<div className="flex items-center gap-2">
+						<Button onClick={() => close(id)}>x</Button>
+					</div>
 				</div>
 				<iframe
 					src="https://www.youtube.com/embed/dQw4w9WgXcQ"
