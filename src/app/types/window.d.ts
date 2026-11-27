@@ -1,12 +1,5 @@
 interface WindowProps {
 	id: string; // crypto.randomUUID()
-	app: AppId;
-	x: number;
-	y: number; // px, relative to window layer
-	w: number;
-	h: number;
+	appMeta: AppMeta;
 	z: number;
-	icon: string;
-	// isMaximized: boolean;
-	// restore?: { x: number; y: number; w: number; h: number }; // for un-maximize
 }
