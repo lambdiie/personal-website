@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { Rnd } from "react-rnd";
 import Button from "@/app/components/Button";
 import { useWindowStore } from "@/app/store/window-store";
+import { X } from "lucide-react";
 
 export default function Window({ id, appMeta }: WindowProps) {
 	const z = useWindowStore((state) => state.order.indexOf(id) + 1);
@@ -44,7 +45,7 @@ export default function Window({ id, appMeta }: WindowProps) {
 				aria-labelledby={`titlebar-${id}`}
 				aria-modal={false}
 			>
-				<div className="flex justify-between border-b-2 border-outline px-2 bg-blue">
+				<div className="flex items-center justify-between border-b-2 border-outline px-2 bg-blue">
 					<div className="flex items-center gap-2">
 						<Image
 							className="[image-rendering:pixelated] shrink-0"
@@ -56,7 +57,9 @@ export default function Window({ id, appMeta }: WindowProps) {
 						<h1 id={`titlebar-${id}`}>{appMeta.name}</h1>
 					</div>
 					<div className="flex items-center gap-2">
-						<Button onClick={() => close(id)}>x</Button>
+						<Button size="sm" onClick={() => close(id)}>
+							<X size={12} />
+						</Button>
 					</div>
 				</div>
 				<iframe
