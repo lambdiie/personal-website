@@ -1,6 +1,6 @@
-import AppContainer from "@/app/features/desktop/AppContainer";
-import WindowContainer from "@/app/features/desktop/WindowContainer";
-import Taskbar from "@/app/features/taskbar/Taskbar";
+import AppContainer from "@/components/desktop/AppContainer";
+import WindowContainer from "@/components/desktop/WindowContainer";
+import Taskbar from "@/components/taskbar/Taskbar";
 
 export default function Home() {
 	return (

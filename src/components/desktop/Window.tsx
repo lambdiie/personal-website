@@ -4,8 +4,8 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import { useCallback } from "react";
 import { Rnd } from "react-rnd";
-import Button from "@/app/components/Button";
-import { useWindowStore } from "@/app/store/window-store";
+import Button from "@/components/ui/Button";
+import { useWindowStore } from "@/store/window-store";
 
 export default function Window({ id, appMeta }: WindowProps) {
 	const z = useWindowStore((state) => state.order.indexOf(id) + 1);

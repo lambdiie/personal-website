@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useWindowStore } from "@/app/store/window-store";
+import { useWindowStore } from "@/store/window-store";
 
 export default function AppIcon({
 	id,

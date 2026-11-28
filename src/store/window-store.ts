@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { APPS } from "@/app/lib/apps";
+import { APPS } from "@/lib/apps";
 
 interface WindowStore {
 	windows: Record<string, WindowProps>;

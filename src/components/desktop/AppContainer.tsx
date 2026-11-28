@@ -1,4 +1,4 @@
-import { APPS } from "@/app/lib/apps";
+import { APPS } from "@/lib/apps";
 import AppIcon from "./AppIcon";
 
 export default function AppContainer() {
